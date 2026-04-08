@@ -4,34 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Booklook — In cautarea cartii</title>
-<meta name="description" content="Cauta si compara preturile cartilor in anticariatele romanesti. Optimizeaza costul comenzii tale.">
-<meta property="og:title" content="Booklook — In cautarea cartii">
-<meta property="og:description" content="Cauta si compara preturile cartilor in anticariatele romanesti. Optimizeaza costul comenzii tale.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0b14'/%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%236d28d9' stroke-width='0.8'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%238b5cf6' stroke-width='0.7'/%3E%3Cpolygon points='16,4 27,10.5 27,21.5 16,28 5,21.5 5,10.5' fill='none' stroke='%23a855f7' stroke-width='0.8'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23a855f7'/%3E%3C/svg%3E">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Booklook — In cautarea cartii">
-<meta name="twitter:description" content="Cauta si compara preturile cartilor in anticariatele romanesti.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0b14'/%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%236d28d9' stroke-width='0.8'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%238b5cf6' stroke-width='0.7'/%3E%3Cpolygon points='16,4 27,10.5 27,21.5 16,28 5,21.5 5,10.5' fill='none' stroke='%23a855f7' stroke-width='0.8'/%3E%3Cpolygon points='16,4 27,10.5 27,21.5 16,28 5,21.5 5,10.5' fill='none' stroke='%23c084fc' stroke-width='0.6' transform='rotate(30 16 16)'/%3E%3Cline x1='16' y1='3' x2='16' y2='29' stroke='%234c1d95' stroke-width='0.5'/%3E%3Cline x1='3' y1='16' x2='29' y2='16' stroke='%234c1d95' stroke-width='0.5'/%3E%3Cline x1='3' y1='16' x2='29' y2='16' stroke='%234c1d95' stroke-width='0.5' transform='rotate(45 16 16)'/%3E%3Cline x1='3' y1='16' x2='29' y2='16' stroke='%234c1d95' stroke-width='0.5' transform='rotate(-45 16 16)'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23a855f7'/%3E%3Ccircle cx='16' cy='3' r='1.2' fill='%23c084fc'/%3E%3Ccircle cx='16' cy='29' r='1.2' fill='%23c084fc'/%3E%3Ccircle cx='3' cy='16' r='1.2' fill='%23c084fc'/%3E%3Ccircle cx='29' cy='16' r='1.2' fill='%23c084fc'/%3E%3C/svg%3E">
-
-<!-- SEO -->
-<meta name="description" content="Booklook iti permite sa cauti si sa compari preturile cartilor in cele mai importante anticariate online din Romania. Optimizare automata a costurilor de transport.">
-<meta name="keywords" content="booklook, anticariat online, carti second hand, carti vechi, anticariat romania, compara preturi carti, anticariat ieftin">
-<meta name="author" content="Saturnalia">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://booklook.ro">
-
-<!-- Open Graph (Facebook, WhatsApp, etc.) -->
-<meta property="og:title" content="Booklook — Cauta carti in anticariate romanesti">
-<meta property="og:description" content="Compara preturile cartilor din cele mai importante anticariate online din Romania. Gratuit, fara reclame.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://booklook.ro">
-<meta property="og:locale" content="ro_RO">
-
-<!-- Twitter/X -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Booklook — Cauta carti in anticariate romanesti">
-<meta name="twitter:description" content="Compara preturile cartilor din cele mai importante anticariate online din Romania. Gratuit, fara reclame.">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -52,10 +25,13 @@
 
   .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
 
-  .search-bar { display: flex; gap: 8px; margin-bottom: 1.5rem; }
-  .search-bar input { flex: 1; padding: 10px 14px; border: 1px solid #6d28d9; border-radius: 6px; font-size: 15px; font-family: Georgia, serif; background: rgba(20,10,40,0.8); color: #e2d9f3; outline: none; }
-  .search-bar input:focus { border-color: #a855f7; box-shadow: 0 0 8px #7c3aed44; }
-  .search-bar input::placeholder { color: #6b5a8a; }
+  .search-bar { display: flex; gap: 8px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .query-wrap { position: relative; flex: 1; display: flex; align-items: center; min-width: 0; }
+  .query-wrap input { width: 100%; padding: 10px 36px 10px 14px; border: 1px solid #6d28d9; border-radius: 6px; font-size: 15px; font-family: Georgia, serif; background: rgba(20,10,40,0.8); color: #e2d9f3; outline: none; }
+  .query-wrap input:focus { border-color: #a855f7; box-shadow: 0 0 8px #7c3aed44; }
+  .query-wrap input::placeholder { color: #6b5a8a; }
+  .query-clear { position: absolute; right: 8px; background: none; border: none; color: #6b5a8a; font-size: 18px; cursor: pointer; padding: 0; line-height: 1; transition: color 0.15s; }
+  .query-clear:hover { color: #c084fc; }
 
   .btn { padding: 10px 18px; border-radius: 6px; border: 1px solid #7c3aed; background: #4c1d95; color: #e2d9f3; font-size: 14px; font-family: Georgia, serif; cursor: pointer; white-space: nowrap; transition: background 0.15s; }
   .btn:hover { background: #6d28d9; border-color: #a855f7; }
@@ -118,18 +94,18 @@
   .scroll-sites { position: fixed; right: calc(50% - 480px); top: 50%; transform: translateY(8px); width: 48px; height: 22px; border-radius: 8px; background: #4c1d95; border: 1px solid #7c3aed; cursor: pointer; opacity: 0.8; transition: opacity 0.2s, box-shadow 0.2s; z-index: 999; }
   .scroll-sites:hover { opacity: 1; box-shadow: 0 0 12px #7c3aed88; }
 
-  .float-vol { position: fixed; left: calc(50% - 480px); top: 50%; transform: translateX(-100%) translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 999; }
+  .float-vol { position: fixed; left: calc(50% - 455px); top: 50%; transform: translateX(-100%) translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 999; }
   .float-vol-row { display: flex; gap: 4px; align-items: center; }
-  .float-vol-input { width: 46px; padding: 7px 6px; border: 1px solid #4c1d95; border-radius: 6px; font-size: 13px; font-family: Georgia, serif; background: rgba(20,10,40,0.9); color: #e2d9f3; outline: none; text-align: center; transition: border-color 0.15s; }
+  .float-vol-input { width: 50px; padding: 8px 6px; border: 1px solid #7c3aed; border-radius: 6px; font-size: 14px; font-family: Georgia, serif; background: rgba(40,20,70,0.95); color: #e2d9f3; outline: none; text-align: center; transition: border-color 0.15s; }
   .float-vol-input:focus { border-color: #a855f7; }
-  .float-vol-input:disabled { opacity: 0.35; cursor: not-allowed; }
-  .float-vol-input::placeholder { color: #6b5a8a; font-size: 11px; }
-  .float-vol-btn { width: 32px; height: 34px; border-radius: 6px; border: 1px solid #4c1d95; background: transparent; color: #9d7cc0; font-size: 18px; cursor: pointer; transition: all 0.15s; line-height: 1; }
-  .float-vol-btn:hover:not(:disabled) { background: #4c1d95; color: #c084fc; border-color: #7c3aed; }
-  .float-vol-btn:disabled { opacity: 0.35; cursor: not-allowed; }
-  .float-vol-btn.active { background: #4c1d95; color: #c084fc; border-color: #a855f7; }
-  .float-vol-badge { font-size: 10px; color: #c084fc; border: 1px solid #6d28d9; border-radius: 10px; padding: 2px 8px; background: rgba(109,40,217,0.15); letter-spacing: 0.4px; cursor: pointer; text-align: center; white-space: nowrap; display: none; }
-  .float-vol-badge:hover { background: rgba(109,40,217,0.3); }
+  .float-vol-input:disabled { opacity: 0.4; cursor: not-allowed; }
+  .float-vol-input::placeholder { color: #9d7cc0; font-size: 11px; }
+  .float-vol-btn { width: 34px; height: 36px; border-radius: 6px; border: 1px solid #7c3aed; background: rgba(40,20,70,0.95); color: #c084fc; font-size: 19px; cursor: pointer; transition: all 0.15s; line-height: 1; }
+  .float-vol-btn:hover:not(:disabled) { background: #6d28d9; color: #e2d9f3; border-color: #a855f7; }
+  .float-vol-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .float-vol-btn.active { background: #6d28d9; color: #e2d9f3; border-color: #a855f7; }
+  .float-vol-badge { font-size: 10px; color: #e2d9f3; border: 1px solid #7c3aed; border-radius: 10px; padding: 2px 8px; background: rgba(109,40,217,0.5); letter-spacing: 0.4px; cursor: pointer; text-align: center; white-space: nowrap; display: none; }
+  .float-vol-badge:hover { background: rgba(109,40,217,0.7); }
 
   .kb-hint { font-size: 11px; color: #6b5a8a; text-align: right; margin-bottom: 0.5rem; letter-spacing: 0.3px; }
   .vol-group { display: flex; gap: 4px; align-items: center; }
@@ -174,15 +150,25 @@
   .info a { color: #818cf8; }
   .info a:hover { color: #c084fc; }
 
+  .mob-note { display: none; background: rgba(6,95,70,0.25); border: 1px solid #6ee7b7; border-radius: 8px; padding: 10px 14px; margin-bottom: 1rem; font-size: 12px; color: #6ee7b7; line-height: 1.6; }
+
+  .search-break { display: none; }
+
   @media (max-width: 700px) {
+    .search-break { display: block; width: 100%; height: 0; order: 3; flex-basis: 100%; }
     .header { padding: 1rem; }
     .header h1 { font-size: 1.4rem; letter-spacing: 1.5px; }
     .container { padding: 1rem 0.75rem; }
 
     .search-bar { flex-wrap: wrap; gap: 6px; }
-    .search-bar input { font-size: 16px; min-width: 0; }
-    .vol-group { order: 3; width: 100%; justify-content: flex-start; }
-    .vol-input { flex: 1; max-width: 80px; }
+    .query-wrap input { font-size: 16px; }
+    .query-wrap { order: 1; }
+    .btn:not(.btn-reset) { order: 2; }
+    .btn-reset:not(.btn-export) { order: 3; }
+    .vol-group { order: 5; }
+    .btn-export { order: 6; }
+    .vol-input { max-width: 80px; }
+    .query-clear { right: 4px; font-size: 22px; padding: 8px 10px; }
     .btn { padding: 10px 14px; font-size: 13px; }
     .btn-reset { padding: 10px 10px; font-size: 12px; }
 
@@ -210,6 +196,8 @@
     .optimize-total { font-size: 12px; }
     .section-label { margin: 0.75rem 0 4px; }
     .saved-group-header { font-size: 10px; }
+    .footer { line-height: 2.4; padding: 1.5rem 2.5rem; }
+    .mob-note { display: block; }
   }
 </style>
 </head>
@@ -222,6 +210,7 @@
 </div>
 
 <div class="container">
+  <div class="mob-note">⚠ Booklook a fost conceput pentru utilizare pe PC / laptop. Funcționează și pe telefon, dar calitatea experienței este considerabil scăzută.</div>
   <div class="info">
     <strong>Booklook</strong> iti permite sa cauti carti intr-un mod mult mai eficient si sa compari preturile mai usor. Poti gestiona cautarea mai multor carti in aceeasi sesiune fara sa pierzi ce ai salvat anterior. La finalul sesiunii poti salva ofertele intr-un fisier text pentru a le comanda ulterior.<br><br>
     <strong>Sesiune salvata automat:</strong> Ofertele tale sunt pastrate automat in browserul tau. Daca inchizi pagina si o redeschizi mai tarziu in acelasi browser, vei gasi tot ce ai salvat intact — fara sa fie nevoie sa reiei cautarea de la zero.<br><br>
@@ -234,14 +223,18 @@
   </div>
 
   <div class="search-bar">
-    <input type="text" id="query" placeholder="Titlu, autor sau cuvant cheie..." />
+    <div class="query-wrap">
+      <input type="text" id="query" placeholder="Titlu, autor sau cuvant cheie..." />
+      <button class="query-clear" id="query-clear" onclick="document.getElementById('query').value=''; document.getElementById('query').focus();" title="Sterge">&#215;</button>
+    </div>
     <button class="btn" onclick="search()">Cauta</button>
+    <button class="btn btn-reset" onclick="resetAll()">Reseteaza</button>
+    <div class="search-break"></div>
     <div class="vol-group">
-      <input type="text" id="vol-input" class="vol-input" placeholder="Vol." disabled maxlength="3" />
+      <input type="text" id="vol-input" class="vol-input" placeholder="Vol." disabled maxlength="3" inputmode="numeric" />
       <button class="vol-btn" id="vol-btn" disabled onclick="setVolume()" title="Seteaza volumul activ">＋</button>
     </div>
-    <button class="btn btn-reset" onclick="resetAll()">Reseteaza</button>
-    <button class="btn btn-reset" onclick="exportSaved()">Descarca Ofertele</button>
+    <button class="btn btn-reset btn-export" onclick="exportSaved()">Descarca Ofertele</button>
   </div>
 
   <div class="saved-section" id="saved-section" style="display:none">
@@ -305,7 +298,7 @@
 <div class="footer">
   Booklook &mdash; Made by Saturnalia &mdash; Created with <a href="https://claude.ai" target="_blank" style="color:#c084fc; text-decoration:none;">Claude AI</a><br>
   <span style="font-size:11px; color:#6b5a8a;">Theme inspired by World of Warcraft Classic Arcane Mage &mdash; Feel free to join me on <a href="https://wow-hc.com/" target="_blank" style="color:#9d7cc0; text-decoration:none;">Hardcore</a></span><br>
-  <span style="font-size:11px; color:#6b5a8a;">For bugs or recommendations: <a href="mailto:dan.tujan@gmail.com" style="color:#9d7cc0; text-decoration:none;">dan.tujan@gmail.com</a></span>
+  <span style="font-size:11px; color:#6b5a8a;">For bugs or recommendations: <a href="#" onclick="this.href='mai'+'lto:'+'dan.tujan'+'@'+'gmail.com'" style="color:#9d7cc0; text-decoration:none;">dan.tujan&#64;gmail.com</a></span>
 </div>
 
 
@@ -818,40 +811,58 @@ function optimizeCost(list) {
 }
 
 function downloadOptimized(combination, grouped, bookTotal, transportTotal, grandTotal) {
-  let rtf = '{\\rtf1\\ansi\\deff0\n';
-  rtf += '{\\fonttbl{\\f0 Georgia;}}\n';
-  rtf += '{\\colortbl;\\red192\\green132\\blue252;\\red110\\green231\\blue183;\\red168\\green85\\blue247;}\n';
-  rtf += '{\\pard\\f0\\fs32\\b\\cf1 Booklook - Oferta Optimizata\\par}\\par\n';
+  const css = `
+    body { margin: 0; padding: 2rem; background: #0d0b14; color: #e2d9f3; font-family: Georgia, serif; display: inline-block; min-width: 480px; }
+    h1 { color: #c084fc; font-size: 1.4rem; letter-spacing: 2px; border-bottom: 1px solid #6d28d9; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    .site-block { margin-bottom: 1.2rem; border: 1px solid #4c1d95; border-radius: 6px; padding: 10px 14px; background: #1a0a2e; }
+    .site-name { color: #d8b4fe; font-size: 1rem; font-weight: 700; }
+    .transport { color: #9d7cc0; font-size: 0.78rem; margin-left: 8px; font-weight: normal; }
+    .transport.free { color: #6ee7b7; }
+    .book { padding: 5px 0; border-bottom: 1px solid #2e1a4a; }
+    .book:last-child { border-bottom: none; }
+    .book-title { color: #e2d9f3; font-size: 0.88rem; font-weight: 600; }
+    .book-price { color: #a855f7; font-size: 0.88rem; margin-left: 6px; }
+    .book-link { color: #818cf8; font-size: 0.78rem; display: block; margin-top: 2px; word-break: break-all; }
+    .total { margin-top: 1.2rem; padding: 10px 14px; border: 1px solid #6d28d9; border-radius: 6px; background: #1a0a2e; text-align: right; color: #a855f7; font-weight: 700; font-size: 0.95rem; }
+  `;
+
+  let html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Booklook - Oferta Optimizata</title><style>${css}</style></head><body>`;
+  html += `<h1>Booklook &#8212; Oferta Optimizata</h1>`;
 
   Object.entries(grouped).forEach(([site, items]) => {
     const isMarketplace = NO_TRANSPORT_SITES.has(site);
     const data = ALL_SITE_DATA[site];
-    rtf += '{\\pard\\f0\\fs22\\b\\cf1\\sb240 ' + rtfEsc(site) + '\\par}\n';
-    items.forEach((s, i) => {
-      let tCost;
-      if (isMarketplace) {
-        tCost = s.customTransport ? parseFloat(s.customTransport) : (data ? data.t : TRANSPORT);
-        if (isNaN(tCost)) tCost = data ? data.t : TRANSPORT;
-      } else {
-        tCost = data ? data.t : TRANSPORT;
-      }
-      const tLabel = isMarketplace ? tCost + ' lei livrare' : tCost + ' lei transport';
-      rtf += '{\\pard\\f0\\fs20\\b\\cf1\\sb80 ' + (i+1) + '. ' + rtfEsc(s.query) + '\\par}\n';
-      rtf += '{\\pard\\f0\\fs18\\cf2 Pret: ' + rtfEsc(parseFloat(s.price).toFixed(2)) + ' lei  |  ' + rtfEsc(tLabel) + '\\par}\n';
-      if (s.link) {
-        rtf += '{\\pard\\f0\\fs17\\cf1 Link: {\\field{\\*\\fldinst HYPERLINK "' + rtfEsc(s.link) + '"}{\\fldrslt\\cf2\\ul ' + rtfEsc(s.link) + '}}\\par}\n';
-      }
+    let tLabel, isFree = false;
+    if (isMarketplace) {
+      const perItemCosts = items.map(s => {
+        const tc = s.customTransport ? parseFloat(s.customTransport) : (data ? data.t : TRANSPORT);
+        return isNaN(tc) ? (data ? data.t : TRANSPORT) : tc;
+      });
+      tLabel = perItemCosts.map(c => c + ' lei livrare/produs').join(', ');
+    } else {
+      const bookSum = items.reduce((sum, s) => sum + parseFloat(s.price), 0);
+      const tc = getTransportCost(site, bookSum);
+      isFree = tc === 0;
+      tLabel = isFree ? 'transport gratuit' : tc + ' lei transport';
+    }
+
+    html += `<div class="site-block">`;
+    html += `<div><span class="site-name">${site}</span><span class="transport${isFree ? ' free' : ''}">${tLabel}</span></div>`;
+    items.forEach(s => {
+      html += `<div class="book"><span class="book-title">${s.query}</span><span class="book-price">${parseFloat(s.price).toFixed(2)} lei</span>`;
+      if (s.link) html += `<a class="book-link" href="${s.link}" target="_blank">${s.link}</a>`;
+      html += `</div>`;
     });
-    rtf += '{\\pard\\par}\n';
+    html += `</div>`;
   });
 
-  rtf += '{\\pard\\f0\\fs20\\b\\cf2\\sb240 Carti: ' + rtfEsc(bookTotal.toFixed(2)) + ' lei  +  Transport: ' + rtfEsc(transportTotal.toFixed(2)) + ' lei  =  Total: ' + rtfEsc(grandTotal.toFixed(2)) + ' lei\\par}\n';
-  rtf += '}';
+  html += `<div class="total">Carti: ${bookTotal.toFixed(2)} lei &nbsp;+&nbsp; Transport: ${transportTotal.toFixed(2)} lei &nbsp;=&nbsp; <strong>Total: ${grandTotal.toFixed(2)} lei</strong></div>`;
+  html += `</body></html>`;
 
-  const blob = new Blob([rtf], { type: 'application/rtf' });
+  const blob = new Blob([html], { type: 'text/html' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'Booklook-Oferta-Optimizata.rtf';
+  a.download = 'Booklook-Oferta-Optimizata.html';
   a.click();
 }
 
@@ -869,31 +880,35 @@ function exportSaved() {
   const groups = {};
   saved.forEach(s => { if (!groups[s.query]) groups[s.query] = []; groups[s.query].push(s); });
 
-  let rtf = '{\\rtf1\\ansi\\deff0\n';
-  rtf += '{\\fonttbl{\\f0 Georgia;}{\\f1 Courier New;}}\n';
-  rtf += '{\\colortbl;\\red192\\green132\\blue252;\\red110\\green231\\blue183;\\red168\\green85\\blue247;}\n';
+  const css = `
+    body { margin: 0; padding: 2rem; background: #0d0b14; color: #e2d9f3; font-family: Georgia, serif; display: inline-block; min-width: 480px; }
+    h1 { color: #c084fc; font-size: 1.4rem; letter-spacing: 2px; border-bottom: 1px solid #6d28d9; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    .group-header { color: #9d7cc0; font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; margin: 1.2rem 0 4px; border-bottom: 1px solid #2e1a4a; padding-bottom: 3px; }
+    .offer { border: 1px solid #4c1d95; border-radius: 6px; padding: 8px 12px; margin-bottom: 5px; background: #1a0a2e; }
+    .site-name { color: #d8b4fe; font-weight: 700; font-size: 0.9rem; }
+    .price { color: #a855f7; font-weight: 700; margin-left: 8px; font-size: 0.9rem; }
+    .query { color: #9d7cc0; font-size: 0.78rem; margin-left: 6px; }
+    .link { color: #818cf8; font-size: 0.78rem; display: block; margin-top: 3px; word-break: break-all; }
+  `;
 
-  rtf += '{\\pard\\f0\\fs32\\b\\cf1 Booklook - Oferte Salvate\\par}\\par\n';
+  let html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Booklook - Oferte Salvate</title><style>${css}</style></head><body>`;
+  html += `<h1>Booklook &#8212; Oferte Salvate</h1>`;
 
   Object.entries(groups).forEach(([query, items]) => {
-    rtf += '{\\pard\\f0\\fs22\\b\\cf1\\sb240 Carte: ' + rtfEsc(query) + '\\par}\n';
-    rtf += '{\\pard\\f0\\fs16\\cf3 ' + '\\u8213?'.repeat(32) + '\\par}\n';
-    items.forEach((s, i) => {
-      rtf += '{\\pard\\f0\\fs20\\b\\cf1\\sb100 ' + (i+1) + '. ' + rtfEsc(s.name) + '\\par}\n';
-      rtf += '{\\pard\\f0\\fs18\\cf2 Pret: ' + rtfEsc(s.price) + ' lei\\par}\n';
-      if (s.link) {
-        rtf += '{\\pard\\f0\\fs17\\cf1 Link: {\\field{\\*\\fldinst HYPERLINK "' + rtfEsc(s.link) + '"}{\\fldrslt\\cf2\\ul ' + rtfEsc(s.link) + '}}\\par}\n';
-      }
+    html += `<div class="group-header">Carte: ${query}</div>`;
+    items.forEach(s => {
+      html += `<div class="offer"><span class="site-name">${s.name}</span><span class="price">${s.price} lei</span><span class="query">&#8212; ${s.query}</span>`;
+      if (s.link) html += `<a class="link" href="${s.link}" target="_blank">${s.link}</a>`;
+      html += `</div>`;
     });
-    rtf += '{\\pard\\par}\n';
   });
 
-  rtf += '}';
+  html += `</body></html>`;
 
-  const blob = new Blob([rtf], { type: 'application/rtf' });
+  const blob = new Blob([html], { type: 'text/html' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'Booklook-Oferte.rtf';
+  a.download = 'Booklook-Oferte.html';
   a.click();
 }
 
