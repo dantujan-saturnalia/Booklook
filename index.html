@@ -460,7 +460,7 @@ function resetAll() {
   currentQuery = '';
   renderSaved();
   flashPage();
-  try { localStorage.removeItem('booklook_saved'); localStorage.removeItem('booklook_savedSites'); } catch(e) {}
+  try { localStorage.removeItem('booklook_saved'); localStorage.removeItem('booklook_savedSites'); localStorage.removeItem('booklook_query'); localStorage.removeItem('booklook_lastVisited'); } catch(e) {}
   setTimeout(() => render(''), 30);
 }
 
@@ -514,7 +514,7 @@ function renderSection(label, sites, q, noTransport) {
     if (q && link) {
       accessBtn.href = link;
       accessBtn.target = '_blank';
-      accessBtn.addEventListener('click', () => { lastVisited = s.name; render(q); });
+      accessBtn.addEventListener('click', () => { lastVisited = s.name; render(q); saveToStorage(); });
     }
     row.appendChild(accessBtn);
 
@@ -947,6 +947,8 @@ function saveToStorage() {
     localStorage.setItem('booklook_savedSites', JSON.stringify(
       Object.fromEntries(Object.entries(savedSitesByQuery).map(([k, v]) => [k, [...v]]))
     ));
+    localStorage.setItem('booklook_query', currentQuery);
+    localStorage.setItem('booklook_lastVisited', lastVisited || '');
   } catch(e) {}
 }
 
@@ -954,10 +956,28 @@ function loadFromStorage() {
   try {
     const s = localStorage.getItem('booklook_saved');
     const q = localStorage.getItem('booklook_savedSites');
+    const cq = localStorage.getItem('booklook_query');
+    const lv = localStorage.getItem('booklook_lastVisited');
     if (s) saved = JSON.parse(s);
     if (q) {
       const raw = JSON.parse(q);
       Object.entries(raw).forEach(([k, v]) => { savedSitesByQuery[k] = new Set(v); });
+    }
+    if (cq && cq.trim()) {
+      currentQuery = cq;
+      document.getElementById('query').value = cq;
+      document.getElementById('vol-input').disabled = false;
+      document.getElementById('vol-btn').disabled = true;
+      if (lv) lastVisited = lv;
+      render(cq);
+      // Restore scroll to last visited row after render
+      if (lv) {
+        setTimeout(() => {
+          const rowId = 'row-' + lv.replace(/\s+/g, '_');
+          const el = document.getElementById(rowId);
+          if (el) el.scrollIntoView({ block: 'center' });
+        }, 80);
+      }
     }
   } catch(e) {}
 }
