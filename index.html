@@ -441,6 +441,7 @@ function search() {
   const badge = document.getElementById('vol-badge');
   if (badge) badge.remove();
   document.getElementById('float-vol-input').disabled = false;
+  try { history.replaceState(null, '', '#q=' + encodeURIComponent(q)); } catch(e) {}
   flashPage();
   setTimeout(() => render(q), 30);
 }
@@ -514,7 +515,12 @@ function renderSection(label, sites, q, noTransport) {
     if (q && link) {
       accessBtn.href = link;
       accessBtn.target = '_blank';
-      accessBtn.addEventListener('click', () => { lastVisited = s.name; render(q); saveToStorage(); });
+      accessBtn.addEventListener('click', () => {
+        lastVisited = s.name;
+        render(q);
+        saveToStorage();
+        try { history.replaceState(null, '', '#q=' + encodeURIComponent(q) + '&lv=' + encodeURIComponent(s.name)); } catch(e) {}
+      });
     }
     row.appendChild(accessBtn);
 
@@ -985,6 +991,31 @@ function loadFromStorage() {
 render('');
 loadFromStorage();
 if (saved.length > 0) renderSaved();
+
+// Restore from URL hash (reliable on mobile back)
+try {
+  const hash = window.location.hash;
+  if (hash && hash.startsWith('#q=')) {
+    const params = new URLSearchParams(hash.slice(1));
+    const q = params.get('q');
+    const lv = params.get('lv');
+    if (q) {
+      currentQuery = q;
+      document.getElementById('query').value = q;
+      document.getElementById('vol-input').disabled = false;
+      document.getElementById('vol-btn').disabled = true;
+      if (lv) lastVisited = lv;
+      render(q);
+      if (lv) {
+        setTimeout(() => {
+          const el = document.getElementById('row-' + lv.replace(/\s+/g,'_'));
+          if (el) el.scrollIntoView({ block: 'center', behavior: 'instant' });
+        }, 150);
+      }
+    }
+  }
+} catch(e) {}
+
 document.getElementById('query').addEventListener('keydown', e => { if (e.key === 'Enter') search(); });
 
 const volInput = document.getElementById('vol-input');
