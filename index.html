@@ -101,8 +101,15 @@
   .scroll-top:hover { opacity: 1; box-shadow: 0 0 12px #7c3aed88; }
   .scroll-sites { position: fixed; right: calc(50% - 480px); top: 50%; transform: translateY(8px); width: 48px; height: 22px; border-radius: 8px; background: #4c1d95; border: 1px solid #7c3aed; cursor: pointer; opacity: 0.8; transition: opacity 0.2s, box-shadow 0.2s; z-index: 999; }
   .scroll-sites:hover { opacity: 1; box-shadow: 0 0 12px #7c3aed88; }
+  .float-search { position: fixed; left: calc(50% - 455px); top: calc(50% - 70px); transform: translateX(-100%); display: flex; align-items: center; gap: 0; z-index: 999; flex-direction: row; }
+  .float-search-input { width: 0; overflow: hidden; padding: 0; border: none; background: rgba(20,10,40,0.95); color: #e2d9f3; font-family: Georgia, serif; font-size: 14px; outline: none; border-radius: 6px 0 0 6px; transition: width 0.25s, padding 0.25s, border 0.25s; order: 1; }
+  .float-search-input.open { width: 100px; padding: 9px 10px; border: 1px solid #7c3aed; border-right: none; }
+  .float-search-input::placeholder { color: #6b5a8a; font-size: 12px; }
+  .float-search-btn { width: 42px; height: 40px; border-radius: 50%; background: #4c1d95; border: 1px solid #7c3aed; color: #c084fc; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0.8; transition: opacity 0.2s, box-shadow 0.2s, border-radius 0.25s; flex-shrink: 0; order: 2; }
+  .float-search-btn.open { border-radius: 0 6px 6px 0; }
+  .float-search-btn:hover { opacity: 1; box-shadow: 0 0 12px #7c3aed88; }
 
-  .float-vol { position: fixed; left: calc(50% - 455px); top: 50%; transform: translateX(-100%) translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 999; }
+  .float-vol { position: fixed; left: calc(50% - 455px); top: calc(50% - 20px); transform: translateX(-100%); display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 999; }
   .float-vol-row { display: flex; gap: 4px; align-items: center; }
   .float-vol-input { width: 50px; padding: 8px 6px; border: 1px solid #7c3aed; border-radius: 6px; font-size: 14px; font-family: Georgia, serif; background: rgba(40,20,70,0.95); color: #e2d9f3; outline: none; text-align: center; transition: border-color 0.15s; }
   .float-vol-input:focus { border-color: #a855f7; }
@@ -160,6 +167,29 @@
 
   .mob-note { display: none; background: rgba(6,95,70,0.25); border: 1px solid #6ee7b7; border-radius: 8px; padding: 10px 14px; margin-bottom: 1rem; font-size: 12px; color: #6ee7b7; line-height: 1.6; }
 
+  .feedback-box { border: 1px solid #4c1d95; border-radius: 8px; padding: 1.2rem 1.4rem; background: rgba(20,10,40,0.5); }
+  .feedback-intro { font-size: 12px; color: #9d7cc0; line-height: 1.7; margin: 0 0 1rem 0; }
+  .feedback-textarea { width: 100%; padding: 10px 12px; background: rgba(13,11,20,0.8); border: 1px solid #4c1d95; border-radius: 6px; color: #e2d9f3; font-family: Georgia, serif; font-size: 13px; resize: vertical; outline: none; box-sizing: border-box; transition: border-color 0.15s; }
+  .feedback-textarea:focus { border-color: #7c3aed; }
+  .feedback-textarea::placeholder { color: #6b5a8a; }
+  .feedback-email { width: 100%; margin-top: 8px; padding: 9px 12px; background: rgba(13,11,20,0.8); border: 1px solid #4c1d95; border-radius: 6px; color: #e2d9f3; font-family: Georgia, serif; font-size: 13px; outline: none; box-sizing: border-box; transition: border-color 0.15s; }
+  .feedback-email:focus { border-color: #7c3aed; }
+  .feedback-email::placeholder { color: #6b5a8a; }
+  .feedback-puzzle { display: flex; align-items: center; gap: 10px; margin-top: 10px; font-size: 12px; color: #9d7cc0; }
+  .feedback-puzzle-input { width: 60px; padding: 7px 10px; background: rgba(13,11,20,0.8); border: 1px solid #4c1d95; border-radius: 6px; color: #e2d9f3; font-family: Georgia, serif; font-size: 13px; outline: none; text-align: center; transition: border-color 0.15s; }
+  .feedback-puzzle-input:focus { border-color: #7c3aed; }
+  .feedback-puzzle-input.shrink { animation: shrinkOut 0.4s forwards; }
+  @keyframes shrinkOut { 0% { width: 60px; opacity: 1; } 100% { width: 0; opacity: 0; padding: 0; border: none; } }
+  .feedback-troll { display: none; align-items: center; gap: 10px; margin-top: 10px; }
+  .feedback-troll.show { display: flex; animation: fadeIn 0.3s; }
+  .troll-msg { font-size: 12px; color: #c084fc; font-style: italic; }
+  .troll-btn { background: transparent; border: 1px solid #6d28d9; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #9d7cc0; transition: all 0.15s; padding: 0; }
+  .troll-btn:hover { background: #4c1d95; color: #c084fc; border-color: #a855f7; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .feedback-row { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+  .feedback-btn { font-size: 13px; padding: 8px 20px; }
+  #feedback-status { font-size: 12px; color: #6ee7b7; }
+
   .search-break { display: none; }
 
   @media (max-width: 700px) {
@@ -196,6 +226,7 @@
     .scroll-top { display: none; }
     .scroll-sites { display: none; }
     .float-vol { display: none; }
+    .float-search { display: none; }
 
     .vol-active-badge { font-size: 11px; margin-left: 0; margin-top: 4px; }
     .info { font-size: 12px; padding: 12px 14px; }
@@ -214,13 +245,14 @@
 <div class="header">
   <h1>Booklook</h1>
   <p>Accesezi usor si compari rapid ofertele de carti din anticariate.</p>
-  <p style="font-size:0.75rem; color:#9d7cc0; margin-top:4px;">Ultima actualizare: 08.04.2026</p>
+  <p style="font-size:0.75rem; color:#9d7cc0; margin-top:4px;">Ultima actualizare: 10.04.2026</p>
 </div>
 
 <div class="container">
   <div class="mob-note">⚠ Booklook a fost conceput pentru utilizare pe PC / laptop. Funcționează și pe telefon, dar calitatea experienței este considerabil scăzută.</div>
   <div class="info">
-    <strong>Booklook</strong> iti permite sa cauti carti intr-un mod mult mai eficient si sa compari preturile mai usor. Poti gestiona cautarea mai multor carti in aceeasi sesiune fara sa pierzi ce ai salvat anterior. La finalul sesiunii poti salva ofertele intr-un fisier text pentru a le comanda ulterior.<br><br>
+    <strong>Booklook</strong> iti permite sa cauti carti intr-un mod mult mai eficient si sa compari preturile mai usor. Poti gestiona cautarea mai multor carti in aceeasi sesiune fara sa pierzi ce ai salvat anterior. La finalul sesiunii poti salva ofertele intr-un fisier pentru a le comanda ulterior.<br><br>
+    <strong>Ce nu face Booklook:</strong> Nu cauta, nu indexeaza si nu verifica stocuri. Nu are o baza de date proprie de carti. Genereaza link-uri de cautare direct in site-urile anticariatelor.<br><br>
     <strong>Sesiune salvata automat:</strong> Ofertele tale sunt pastrate automat in browserul tau. Daca inchizi pagina si o redeschizi mai tarziu in acelasi browser, vei gasi tot ce ai salvat intact — fara sa fie nevoie sa reiei cautarea de la zero.<br><br>
     <strong>Cauta simplu:</strong> Evitati combinatia titlu + autor in aceeasi cautare. Exceptie: cand titlul este un cuvant foarte comun — de ex. pentru <em>„Ion" de Liviu Rebreanu</em>, o cautare doar dupa „Ion" va returna mii de rezultate irelevante, deci adaugati si autorul. De preferat, folositi doar titlul sau doar autorul — site-urile separa diferit aceste campuri ( - , ; , spatiu ).<br><br>
     <strong>Cautare Manuala <span class="google-badge" style="vertical-align:middle;">manual</span></strong> — Cateva site-uri nu permit cautare directa prin link. Butonul <em>Acceseaza</em> deschide homepage-ul site-ului — cautarea se face manual odata ajuns acolo. Daca gasesti cartea, copiaza linkul ei in campul <em>Link direct</em> inainte de a salva.<br><br>
@@ -251,6 +283,7 @@
   </div>
 
   <div class="kb-hint">Pret + Enter &rarr; salveaza</div>
+  <div class="kb-hint">V + &uarr;&darr; scroll &rarr; Volum</div>
   <div class="sites-list" id="sites-list"></div>
   <div class="info" style="margin-top:1.5rem; font-size:12px; color:#9d7cc0;">
     <strong style="color:#c084fc;">Marketplace</strong> — Costul transportului variaza de la un furnizor la altul. Orientativ, ofertele salvate din aceste platforme sunt calculate cu un transport implicit de <strong style="color:#d8b4fe;">20 lei</strong>. Daca stii costul exact, il poti introduce manual in casuta <em>Livrare</em> de pe randul fiecarei platforme — valoarea introdusa va fi folosita in calculul de optimizare.
@@ -262,12 +295,43 @@
 </button>
 <button class="scroll-sites" onclick="document.getElementById('sites-list').scrollIntoView({behavior:'smooth', block:'start'});" title="La anticariate"></button>
 
+<div class="float-search" id="float-search">
+  <input type="text" id="float-query" class="float-search-input" placeholder="Titlu, autor..." />
+  <button class="float-search-btn" id="float-search-btn" title="Cauta">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+  </button>
+</div>
+
 <div class="float-vol" id="float-vol">
   <div class="float-vol-row">
     <input type="text" id="float-vol-input" class="float-vol-input" placeholder="Vol." disabled maxlength="3" />
     <button class="float-vol-btn" id="float-vol-btn" disabled onclick="floatSetVolume()" title="Seteaza volumul activ">＋</button>
   </div>
   <div class="float-vol-badge" id="float-vol-badge"></div>
+</div>
+
+<div class="container" style="margin-top: 2rem;">
+  <div class="feedback-box">
+    <p class="feedback-intro">Booklook e un proiect personal în continuă dezvoltare. Dacă ai găsit un bug, cunoști un anticariat care nu se regăsește în listă sau ai o idee de îmbunătățire — scrie mai jos. Dacă vrei un răspuns, lasă și un email.</p>
+    <form id="feedback-form" action="https://formspree.io/f/meepbojr" method="POST">
+      <textarea name="message" id="feedback-msg" class="feedback-textarea" placeholder="Mesajul tău..." rows="4" required></textarea>
+      <input type="email" name="email" class="feedback-email" placeholder="Email (opțional)" />
+      <div class="feedback-puzzle" id="puzzle-wrap">
+        <span id="puzzle-question"></span>
+        <input type="text" id="puzzle-answer" class="feedback-puzzle-input" maxlength="3" inputmode="numeric" />
+      </div>
+      <div class="feedback-troll" id="feedback-troll">
+        <span class="troll-msg">Hai să nu. Încearcă altă întrebare.</span>
+        <button type="button" class="troll-btn" id="troll-retry" title="Altă întrebare">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4"/></svg>
+        </button>
+      </div>
+      <div class="feedback-row">
+        <button type="submit" class="btn feedback-btn">Trimite</button>
+        <span id="feedback-status"></span>
+      </div>
+    </form>
+  </div>
 </div>
 
 <div class="container" style="margin-top: 2rem;">
@@ -305,8 +369,7 @@
 
 <div class="footer">
   Booklook &mdash; Made by Saturnalia &mdash; Created with <a href="https://claude.ai" target="_blank" style="color:#c084fc; text-decoration:none;">Claude AI</a><br>
-  <span style="font-size:11px; color:#6b5a8a;">Theme inspired by World of Warcraft Classic Arcane Mage &mdash; Feel free to join me on <a href="https://wow-hc.com/" target="_blank" style="color:#9d7cc0; text-decoration:none;">Hardcore</a></span><br>
-  <span style="font-size:11px; color:#6b5a8a;">For bugs or recommendations: <a href="#" onclick="this.href='mai'+'lto:'+'dan.tujan'+'@'+'gmail.com'" style="color:#9d7cc0; text-decoration:none;">dan.tujan&#64;gmail.com</a></span>
+  <span style="font-size:11px; color:#6b5a8a;">Theme inspired by World of Warcraft Classic Arcane Mage &mdash; Feel free to join me on <a href="https://wow-hc.com/" target="_blank" style="color:#9d7cc0; text-decoration:none;">Hardcore</a></span>
 </div>
 
 
@@ -608,6 +671,11 @@ function renderSection(label, sites, q, noTransport) {
       saveBtn.addEventListener('click', () => doSave());
     }
     row.appendChild(saveBtn);
+
+    // Focus price input on PC if this is the last visited row
+    if (window.innerWidth > 700 && lastVisited === s.name && !alreadySaved) {
+      setTimeout(() => priceInput.focus(), 200);
+    }
 
     frag.appendChild(row);
   });
@@ -1009,7 +1077,16 @@ try {
       if (lv) {
         setTimeout(() => {
           const el = document.getElementById('row-' + lv.replace(/\s+/g,'_'));
-          if (el) el.scrollIntoView({ block: 'center', behavior: 'instant' });
+          if (el) {
+            el.scrollIntoView({ block: 'center', behavior: 'instant' });
+            // Focus price input on PC only (not mobile)
+            if (window.innerWidth > 700) {
+              const priceInput = el.querySelector('.price-input');
+              if (priceInput && !priceInput.classList.contains('link-input')) {
+                priceInput.focus();
+              }
+            }
+          }
         }, 150);
       }
     }
@@ -1097,9 +1174,214 @@ search = function() {
   syncFloatVol();
 };
 
-// Enable float inputs after search like main inputs
-const _origSearchInner = search;
-document.getElementById('query').addEventListener('keydown', function() {});
+// Feedback form puzzle
+const TROLL_QUESTIONS = [
+  "La ce oră exactă l-a întâlnit Dante pe Vergiliu în pădurea întunecată?",
+  "Câte pene are o bufniță Hedwig adultă?",
+  "Câți viermi de nisip existau pe Arrakis în momentul nașterii lui Paul Atreides?",
+  "Care este temperatura exactă la care ardeau cărțile în Fahrenheit 451?",
+  "Care este greutatea în grame a inelului lui Sauron?"
+];
+
+let trollStreak = 0;
+let usedTrollIndexes = [];
+
+function getTrollMessage() {
+  if (trollStreak === 1) return 'Hai să nu. Încearcă altă întrebare.';
+  if (trollStreak === 2) return 'Serios? Nici asta nu știi?';
+  return 'Consideră-te norocos. Șansa să dai consecutiv de 3 ori peste un troll era de 0.8%.';
+}
+
+let puzzleAnswer = 0;
+let isTroll = false;
+
+function generatePuzzle() {
+  const trollWrap = document.getElementById('feedback-troll');
+  const puzzleWrap = document.getElementById('puzzle-wrap');
+  const answerEl = document.getElementById('puzzle-answer');
+
+  trollWrap.classList.remove('show');
+  puzzleWrap.style.display = 'flex';
+  answerEl.classList.remove('shrink');
+  answerEl.style.width = '';
+  answerEl.style.opacity = '';
+  answerEl.value = '';
+
+  const el = document.getElementById('puzzle-question');
+
+  // Force normal after 3 consecutive trolls
+  if (trollStreak >= 3) {
+    isTroll = false;
+    trollStreak = 0;
+  } else {
+    isTroll = Math.random() < (2/10);
+  }
+
+  if (isTroll) {
+    trollStreak++;
+    const available = TROLL_QUESTIONS.map((_, i) => i).filter(i => !usedTrollIndexes.includes(i));
+    const idx = available[Math.floor(Math.random() * available.length)];
+    usedTrollIndexes.push(idx);
+    el.textContent = '(Anti-spam) ' + TROLL_QUESTIONS[idx];
+    puzzleAnswer = -1;
+  } else {
+    trollStreak = 0;
+    usedTrollIndexes = [];
+    const a = Math.floor(Math.random() * 9) + 1;
+    const b = Math.floor(Math.random() * 9) + 1;
+    puzzleAnswer = a + b;
+    el.textContent = '(Anti-spam) Cât face ' + a + ' + ' + b + '?';
+  }
+}
+generatePuzzle();
+
+// Troll: on focus of answer input, trigger shrink animation
+document.getElementById('puzzle-answer').addEventListener('focus', () => {
+  if (!isTroll) return;
+  const answerEl = document.getElementById('puzzle-answer');
+  const puzzleWrap = document.getElementById('puzzle-wrap');
+  const trollWrap = document.getElementById('feedback-troll');
+  answerEl.classList.add('shrink');
+  setTimeout(() => {
+    puzzleWrap.style.display = 'none';
+    document.querySelector('.troll-msg').textContent = getTrollMessage();
+    trollWrap.classList.add('show');
+  }, 400);
+});
+
+document.getElementById('troll-retry').addEventListener('click', () => {
+  generatePuzzle();
+});
+
+const feedbackForm = document.getElementById('feedback-form');
+if (feedbackForm) {
+  feedbackForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const answerEl = document.getElementById('puzzle-answer');
+    const status = document.getElementById('feedback-status');
+    if (isTroll) {
+      status.style.color = '#f87171';
+      status.textContent = 'Rezolvă mai întâi puzzle-ul.';
+      return;
+    }
+    if (parseInt(answerEl.value) !== puzzleAnswer) {
+      status.style.color = '#f87171';
+      status.textContent = 'Răspuns greșit la puzzle.';
+      generatePuzzle();
+      return;
+    }
+    status.style.color = '#9d7cc0';
+    status.textContent = 'Se trimite...';
+    try {
+      const data = new FormData(feedbackForm);
+      const resp = await fetch(feedbackForm.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (resp.ok) {
+        status.style.color = '#6ee7b7';
+        status.textContent = 'Mesaj trimis. Mulțumesc!';
+        feedbackForm.reset();
+        generatePuzzle();
+      } else {
+        status.style.color = '#f87171';
+        status.textContent = 'Eroare la trimitere. Încearcă din nou.';
+      }
+    } catch(err) {
+      status.style.color = '#f87171';
+      status.textContent = 'Eroare de conexiune.';
+    }
+  });
+}
+const floatQueryEl = document.getElementById('float-query');
+const floatSearchBtn = document.getElementById('float-search-btn');
+let floatOpen = false;
+
+floatSearchBtn.addEventListener('click', () => {
+  if (!floatOpen) {
+    floatOpen = true;
+    floatQueryEl.classList.add('open');
+    floatSearchBtn.classList.add('open');
+    floatQueryEl.focus();
+  } else {
+    const q = floatQueryEl.value.trim();
+    if (q) {
+      document.getElementById('query').value = q;
+      search();
+      document.getElementById('sites-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+});
+
+floatQueryEl.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    const q = floatQueryEl.value.trim();
+    if (q) {
+      document.getElementById('query').value = q;
+      search();
+      document.getElementById('sites-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  if (e.key === 'Escape') {
+    floatOpen = false;
+    floatQueryEl.classList.remove('open');
+    floatSearchBtn.classList.remove('open');
+    floatQueryEl.value = '';
+    floatQueryEl.blur();
+  }
+});
+
+// Close on click outside
+document.addEventListener('click', e => {
+  if (floatOpen && !e.target.closest('.float-search')) {
+    floatOpen = false;
+    floatQueryEl.classList.remove('open');
+    floatSearchBtn.classList.remove('open');
+  }
+});
+
+// V + scroll anywhere = change volume
+let vKeyDown = false;
+let wheelAccum = 0;
+let wheelTimer = null;
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'v' || e.key === 'V') {
+    const tag = document.activeElement.tagName;
+    const cls = document.activeElement.className || '';
+    // Allow if not in input, OR if in price input (not link input, not vol input)
+    if (tag !== 'INPUT' || cls.includes('price-input') && !cls.includes('link-input') && !cls.includes('vol-input')) {
+      vKeyDown = true;
+    }
+  }
+});
+document.addEventListener('keyup', e => {
+  if (e.key === 'v' || e.key === 'V') { vKeyDown = false; wheelAccum = 0; }
+});
+
+document.addEventListener('wheel', e => {
+  if (!vKeyDown) return;
+  e.preventDefault();
+
+  wheelAccum += e.deltaY;
+  if (Math.abs(wheelAccum) < 50) return; // threshold - less sensitive
+  const delta = wheelAccum < 0 ? -1 : 1;
+  wheelAccum = 0;
+
+  let cur = 0;
+  if (activeVolume) {
+    const rom = activeVolume.replace('VOL. ', '');
+    const map = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1};
+    let s = rom;
+    for (const [k,v] of Object.entries(map)) { while (s.startsWith(k)) { cur += v; s = s.slice(k.length); } }
+  }
+
+  const next = Math.max(1, Math.min(100, (cur || 0) + delta));
+  volInput.value = next;
+  fvi.value = next;
+  volInput.disabled = false;
+  fvi.disabled = false;
+  volBtn.disabled = false;
+  fvb.disabled = false;
+  setVolume();
+}, { passive: false });
 </script>
 </body>
 </html>
